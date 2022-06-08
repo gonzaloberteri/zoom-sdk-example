@@ -1,13 +1,12 @@
-import { ZoomVideoSdkContext } from '@zoom/react-native-videosdk/lib/typescript/Context';
+import {ZoomVideoSdkContext} from '@zoom/react-native-videosdk/lib/typescript/Context';
+import {User} from '../../types/user';
 import generateSignature from './generateSignature';
 
-export interface User {
-  role: 0 | 1;
-  key: string;
-  identity: string;
-}
-
-const joinSession = async (zoom: ZoomVideoSdkContext, user: User, sessionName: string) => {
+const joinSession = async (
+  zoom: ZoomVideoSdkContext,
+  user: User,
+  sessionName: string,
+) => {
   const token = await generateSignature(
     sessionName,
     user.role,
